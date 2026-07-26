@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ThreadWatch AI — AI Workforce Intelligence & Compliance Platform</title>
+<meta name="description" content="AI Workforce Intelligence & Compliance Platform for Bangladesh's RMG Industry." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🧵</text></svg>" />
+</head>
+<body>
+
+<!-- ============== TOP NAVIGATION ============== -->
+<header class="topbar">
+  <button class="brand" id="brandReload" type="button" aria-label="Reload ThreadWatch AI" title="Reload">
+    <div class="brand-logo">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7c5cff"/>
+            <stop offset="100%" stop-color="#22d3ee"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="30" height="30" rx="8" fill="url(#bg)"/>
+        <path d="M8 20c4-6 8-6 12 0M8 24c4-6 8-6 12 0M8 16c4-6 8-6 12 0" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="brand-name" data-i18n="brand.name">ThreadWatch AI</div>
+      <div class="brand-tag" data-i18n="brand.tag">Workforce Intelligence · RMG · Bangladesh</div>
+    </div>
+  </button>
+
+  <nav class="role-switch" role="tablist" aria-label="Choose experience">
+    <button class="role-btn active" data-role="worker" role="tab">
+      <span class="role-ico">👷</span><span data-i18n="role.worker">Worker</span>
+    </button>
+    <button class="role-btn" data-role="manager" role="tab">
+      <span class="role-ico">🏭</span><span data-i18n="role.manager">Manager</span>
+    </button>
+    <button class="role-btn" data-role="inspector" role="tab">
+      <span class="role-ico">🛡️</span><span data-i18n="role.inspector">Inspector</span>
+    </button>
+    <button class="role-btn" data-role="industries" role="tab">
+      <span class="role-ico">🏭</span><span data-i18n="role.industries">Industries</span>
+    </button>
+  </nav>
+
+  <div class="topbar-actions">
+    <div class="health-pill" title="Platform status">
+      <span class="pulse-dot"></span> <span data-i18n="topbar.health">AI Engine · Live</span>
+    </div>
+    <button class="icon-btn" id="langToggle" data-i18n="topbar.lang" title="Language">EN / বাংলা</button>
+  </div>
+</header>
+
+<!-- ============== APP SHELL ============== -->
+<main id="app" class="app-shell">
+
+  <!-- ============== LANDING / HERO ============== -->
+  <section class="view view-hero active" data-view="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="dot"></span> <span data-i18n="hero.eyebrow">AI Workforce Intelligence & Compliance Platform</span>
+        </div>
+        <h1 class="hero-title">
+          <span data-i18n="hero.title.a">Giving every worker a</span> <span class="grad" data-i18n="hero.title.b">safe voice</span><br/>
+          <span data-i18n="hero.title.c">and every factory the</span> <span class="grad2" data-i18n="hero.title.d">intelligence</span> <span data-i18n="hero.title.e">to act before problems grow.</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.sub">
+          ThreadWatch AI continuously measures workplace health using AI — a health monitor for factories, just like a smartwatch monitors your heartbeat.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" data-go="worker">
+            <span>👷</span> <span data-i18n="hero.cta.worker">I'm a Worker</span>
+          </button>
+          <button class="btn btn-ghost" data-go="manager">
+            <span>🏭</span> <span data-i18n="hero.cta.manager">Open Manager Dashboard</span>
+          </button>
+          <button class="btn btn-ghost" data-go="inspector">
+            <span>🛡️</span> <span data-i18n="hero.cta.inspector">Inspector Console</span>
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value">1.2M+</div>
+            <div class="stat-label" data-i18n="hero.stat.works.label">Workers monitored</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">3,400+</div>
+            <div class="stat-label" data-i18n="hero.stat.factories.label">Factories connected</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">87%</div>
+            <div class="stat-label" data-i18n="hero.stat.resolution.label">Avg. resolution rate</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">24/7</div>
+            <div class="stat-label" data-i18n="hero.stat.monitoring.label">AI monitoring</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="device-card">
+          <div class="device-header">
+            <div class="device-dots"><span></span><span></span><span></span></div>
+            <div class="device-title" data-i18n="hero.device.title">Factory Health Monitor</div>
+            <select id="heroFactorySelect" class="device-factory-select" aria-label="Select factory">
+              <option value="ALL">All Factories</option>
+            </select>
+            <div class="device-time" id="liveClock">—</div>
+          </div>
+          <div class="device-watching">
+            <span class="watching-lbl">AI is watching</span>
+            <svg class="ecg" viewBox="0 0 100 24" width="80" height="18" preserveAspectRatio="none">
+              <polyline points="0,12 10,12 14,4 18,20 22,12 40,12 50,8 54,18 58,12 100,12" />
+            </svg>
+            <span class="watching-tally-wrap">Anomalies detected: <span id="watchingTally">0</span></span>
+          </div>
+          <div class="device-body">
+            <div class="health-ring">
+              <svg viewBox="0 0 120 120" width="180" height="180">
+                <defs>
+                  <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#22d3ee"/>
+                    <stop offset="100%" stop-color="#7c5cff"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="50" stroke="#1f2937" stroke-width="10" fill="none"/>
+                <circle cx="60" cy="60" r="50" stroke="url(#ring)" stroke-width="10" fill="none"
+                  stroke-linecap="round" stroke-dasharray="314" stroke-dashoffset="60"
+                  transform="rotate(-90 60 60)" id="healthRing"/>
+              </svg>
+              <div class="health-center">
+                <div class="health-num" id="healthScore">81</div>
+                <div class="health-suffix">/100</div>
+                <div class="health-label" data-i18n="hero.device.healthLabel">Factory Health</div>
+                <div class="health-why" id="healthWhy" title="Why this score?">🤖 Why?</div>
+              </div>
+            </div>
+            <div class="mini-grid">
+              <div class="mini">
+                <div class="mini-label" data-i18n="hero.device.miniComplaints">Complaints</div>
+                <div class="mini-value" id="heroMiniComplaints">87</div>
+                <div class="mini-trend up" id="heroMiniComplaintsTrend">▲ 12%</div>
+              </div>
+              <div class="mini">
+                <div class="mini-label" data-i18n="hero.device.miniSentiment">Sentiment</div>
+                <div class="mini-value" id="heroMiniSentiment">62%</div>
+                <div class="mini-trend down" id="heroMiniSentimentTrend">▼ 4%</div>
+              </div>
+              <div class="mini">
+                <div class="mini-label" data-i18n="hero.device.miniResolution">Resolution</div>
+                <div class="mini-value" id="heroMiniResolution">3.2d</div>
+                <div class="mini-trend up" id="heroMiniResolutionTrend">▲ 0.4d</div>
+              </div>
+              <div class="mini">
+                <div class="mini-label" data-i18n="hero.device.miniSafety">Safety</div>
+                <div class="mini-value" id="heroMiniSafety">94%</div>
+                <div class="mini-trend up" id="heroMiniSafetyTrend">▲ 1%</div>
+              </div>
+            </div>
+            <div class="ai-stream">
+              <div class="ai-stream-title" data-i18n="hero.device.aiStream">🤖 AI Live Stream</div>
+              <div class="ai-stream-body" id="aiStream">
+                <div class="ai-line">▪ Detected 20 workers reporting delayed salary → merged into one incident</div>
+                <div class="ai-line warn">▪ Sewing machine vibration issue flagged in Section B — Critical</div>
+                <div class="ai-line good">▪ Fire drill completed in Factory XYZ — score +3</div>
+                <div class="ai-line">▪ AI recommends: review payroll schedule this week</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============== INDUSTRY DIRECTORY VIEW ============== -->
+  <section class="view" data-view="industries">
+    <div class="view-header">
+      <div>
+        <div class="view-eyebrow" data-i18n="ind.view.eyebrow"></div>
+        <h2 class="view-title" data-i18n="ind.view.title"></h2>
+        <p class="view-sub" data-i18n="ind.view.sub"></p>
+      </div>
+      <div class="ind-summary" id="indSummary">
+        <div class="ind-stat">
+          <div class="ind-stat-num" id="indTotalCount">—</div>
+          <div class="ind-stat-lbl">Industries</div>
+        </div>
+        <div class="ind-stat">
+          <div class="ind-stat-num" id="indWorkerCount">—</div>
+          <div class="ind-stat-lbl">Workers</div>
+        </div>
+        <div class="ind-stat">
+          <div class="ind-stat-num" id="indAvgHealth">—</div>
+          <div class="ind-stat-lbl">Avg Health</div>
+        </div>
+        <div class="ind-stat">
+          <div class="ind-stat-num" id="indCriticalCount">—</div>
+          <div class="ind-stat-lbl">Critical</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ind-toolbar">
+      <div class="ind-search">
+        <span class="ind-search-ico">🔎</span>
+        <input id="indSearch" type="search" placeholder="Search by name, city, or category…" autocomplete="off"/>
+      </div>
+      <div class="ind-filters" id="indFilters">
+        <button class="ind-chip active" data-filter="all">All</button>
+        <button class="ind-chip" data-filter="good">🟢 Excellent</button>
+        <button class="ind-chip" data-filter="warn">🟡 Needs Attention</button>
+        <button class="ind-chip" data-filter="bad">🔴 Critical</button>
+      </div>
+      <select id="indSort" class="ind-sort">
+        <option value="health-desc">Health: High → Low</option>
+        <option value="health-asc">Health: Low → High</option>
+        <option value="workers-desc">Workers: Largest</option>
+        <option value="name-asc">Name A–Z</option>
+      </select>
+    </div>
+
+    <div class="ind-layout">
+      <div class="ind-grid" id="indGrid"></div>
+      <aside class="ind-detail" id="indDetail">
+        <div class="ind-detail-empty">
+          <div class="ind-detail-empty-ico">🏭</div>
+          <div class="ind-detail-empty-title">Select an industry</div>
+          <div class="ind-detail-empty-sub">Tap any card on the left to see its AI-powered health report, complaint breakdown, and trend lines.</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+<!-- ============== WORKER VIEW ============== -->
+  <section class="view" data-view="worker">
+    <div class="view-header">
+      <div>
+        <div class="view-eyebrow" data-i18n="worker.view.eyebrow">👷 Worker Experience</div>
+        <h2 class="view-title" data-i18n="worker.view.title">Your voice matters. Anonymously.</h2>
+      </div>
+      <div class="view-tabs">
+        <button class="tab-btn active" data-wtab="complaint" data-i18n="worker.tab.complaint">📝 Submit</button>
+        <button class="tab-btn" data-wtab="track" data-i18n="worker.tab.track">📂 My Reports</button>
+        <button class="tab-btn" data-wtab="chat" data-i18n="worker.tab.chat">🤖 AI Helper</button>
+        <button class="tab-btn" data-wtab="learn" data-i18n="worker.tab.learn">📚 Safety Lessons</button>
+      </div>
+    </div>
+
+    <div class="worker-grid">
+      <!-- COMPLAINT TAB -->
+      <div class="wtab-pane active" data-wpane="complaint">
+        <div class="card complaint-card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="worker.complaint.title">Submit a concern</div>
+            <div class="anon-toggle">
+              <span class="anon-dot"></span>
+              <span data-i18n="worker.complaint.anon">100% Anonymous · Auto-protected</span>
+            </div>
+          </div>
+
+          <div class="input-tabs">
+            <button class="input-tab active" data-mode="voice" data-i18n="worker.input.tab.voiceShort">🎙️ Voice (Bangla)</button>
+            <button class="input-tab" data-mode="text" data-i18n="worker.input.tab.textShort">⌨️ Type</button>
+          </div>
+
+          <div class="input-mode active" data-imode="voice">
+            <div class="voice-stage">
+              <button class="mic-btn" id="micBtn" aria-label="Press to speak">
+                <span class="mic-pulse"></span>
+                <span class="mic-icon">🎙️</span>
+              </button>
+              <div class="voice-status" id="voiceStatus" data-i18n="worker.voice.status.idle">Tap the microphone to speak in Bangla or English</div>
+              <div class="voice-wave" id="voiceWave" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-mode" data-imode="text">
+            <textarea id="textInput" rows="5" data-i18n-placeholder="worker.text.placeholderFull" placeholder="Type your concern in Bangla or English. Example: আমাদের তিন মাস ধরে বেতন দেয় নাই। Workers are not allowed to use the bathroom during working hours."></textarea>
+            <div class="quick-prompts">
+              <button class="qp" data-q="আমাদের তিন মাস ধরে বেতন দেয় নাই।" data-i18n="worker.qp.salary">বেতন দেরি (Delayed salary)</button>
+              <button class="qp" data-q="The sewing machine keeps shaking and sparks appear." data-i18n="worker.qp.machine">মেশিনে সমস্যা (Machine)</button>
+              <button class="qp" data-q="My supervisor is verbally abusive and threatens us." data-i18n="worker.qp.harass">হয়রানি (Harassment)</button>
+              <button class="qp" data-q="We are forced to work 12 hours overtime without pay." data-i18n="worker.qp.overtime">জোরপূর্বক ওভারটাইম</button>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button class="btn btn-primary" id="analyzeBtn" data-i18n="worker.ai.analyze">🤖 Analyze with AI</button>
+            <button class="btn btn-ghost" id="clearBtn" data-i18n="worker.ai.clear">Clear</button>
+          </div>
+
+          <div class="ai-result" id="aiResult" hidden>
+            <div class="ai-result-head">
+              <div class="ai-result-title" data-i18n="worker.ai.title">🧠 AI Understanding</div>
+              <div class="ai-result-time" data-i18n="worker.ai.justNow">just now</div>
+            </div>
+            <div class="ai-result-grid">
+              <div class="ai-tile">
+                <div class="ai-tile-label" data-i18n="worker.ai.label.category">Category</div>
+                <div class="ai-tile-value" id="rCategory">—</div>
+              </div>
+              <div class="ai-tile">
+                <div class="ai-tile-label" data-i18n="worker.ai.label.severity">Severity</div>
+                <div class="ai-tile-value" id="rSeverity">—</div>
+              </div>
+              <div class="ai-tile">
+                <div class="ai-tile-label" data-i18n="worker.ai.label.sentiment">Sentiment</div>
+                <div class="ai-tile-value" id="rSentiment">—</div>
+              </div>
+              <div class="ai-tile">
+                <div class="ai-tile-label" data-i18n="worker.ai.label.urgency">Urgency</div>
+                <div class="ai-tile-value" id="rUrgency">—</div>
+              </div>
+            </div>
+            <div class="ai-summary">
+              <div class="ai-summary-label" data-i18n="worker.ai.summary">📋 Summary</div>
+              <div class="ai-summary-text" id="rSummary">—</div>
+            </div>
+            <div class="ai-summary">
+              <div class="ai-summary-label" data-i18n="worker.ai.root">🔍 Root Cause</div>
+              <div class="ai-summary-text" id="rRoot">—</div>
+            </div>
+            <div class="ai-summary">
+              <div class="ai-summary-label" data-i18n="worker.ai.reco">💡 Recommended Actions</div>
+              <ul class="ai-reco" id="rReco"></ul>
+            </div>
+            <div class="ai-translation" id="rTrans" hidden>
+              <div class="ai-summary-label" data-i18n="worker.ai.trans">🌐 English Translation</div>
+              <div class="ai-summary-text" id="rTransText">—</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-primary" id="submitBtn" data-i18n="worker.submit.anonymous">✅ Submit Anonymously</button>
+              <button class="btn btn-ghost" id="editBtn" data-i18n="worker.submit.edit">✏️ Edit</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card helper-card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="worker.rights.title">💡 Worker Rights Quick View</div>
+          </div>
+          <ul class="rights-list">
+            <li><span>💰</span> <span data-i18n="worker.rights.1">Minimum wage: ৳12,500/month (as per gazette)</span></li>
+            <li><span>⏰</span> <span data-i18n="worker.rights.2">Overtime must be paid at 2× rate</span></li>
+            <li><span>🛡️</span> <span data-i18n="worker.rights.3">Workplace harassment is a punishable offense</span></li>
+            <li><span>🏥</span> <span data-i18n="worker.rights.4">Free medical care for work-related injury</span></li>
+            <li><span>📅</span> <span data-i18n="worker.rights.5">1 day off per week is mandatory</span></li>
+            <li><span>🤫</span> <span data-i18n="worker.rights.6">Retaliation against complainants is illegal</span></li>
+          </ul>
+          <div class="emergency">
+            <div class="emergency-title" data-i18n="worker.emergency.title">🚨 Emergency</div>
+            <div class="emergency-sub" data-i18n="worker.emergency.sub">National Helpline · 999 · BGMEA Health Center · 02-9551292</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRACK TAB -->
+      <div class="wtab-pane" data-wpane="track">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="worker.reports.title">📂 My Reports</div>
+            <div class="muted" data-i18n="worker.reports.muted">Anonymous IDs · No personal info stored</div>
+          </div>
+          <div class="report-list" id="reportList"></div>
+        </div>
+      </div>
+
+      <!-- CHAT TAB -->
+      <div class="wtab-pane" data-wpane="chat">
+        <div class="card chat-card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="worker.chat.title">🤖 AI Helper</div>
+            <div class="muted" data-i18n="worker.chat.subtitle">Ask anything about your rights, safety, or factory procedures</div>
+          </div>
+          <div class="chat-window" id="chatWindow">
+            <div class="chat-msg bot">
+              <div class="chat-avatar">🤖</div>
+              <div class="chat-bubble">
+                <span data-i18n="worker.chat.welcome">Hello! I'm your AI assistant. Ask me anything in Bangla or English. Try:</span>
+                <div class="chat-suggest">
+                  <button class="cs" data-q="Can my employer force overtime?" data-i18n="worker.chat.s1">Can my employer force overtime?</button>
+                  <button class="cs" data-q="What should I do if salary is delayed?" data-i18n="worker.chat.s2">Salary delayed — what to do?</button>
+                  <button class="cs" data-q="How can I report harassment?" data-i18n="worker.chat.s3">How to report harassment?</button>
+                  <button class="cs" data-q="What should I do during a fire?" data-i18n="worker.chat.s4">Fire emergency — what to do?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-input">
+            <input type="text" id="chatInput" data-i18n-placeholder="worker.chat.placeholder" placeholder="Ask your question..." />
+            <button class="btn btn-primary" id="chatSend" data-i18n="worker.chat.send">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEARN TAB -->
+      <div class="wtab-pane" data-wpane="learn">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="worker.lesson.title">📚 Safety Lessons</div>
+            <div class="muted" data-i18n="worker.lesson.muted">3-minute micro-lessons · AI tracks your progress</div>
+          </div>
+          <div class="lessons-grid" id="lessonsGrid"></div>
+        </div>
+        <div class="card" id="lessonRunner" hidden>
+          <div class="card-head">
+            <div class="card-title" id="lessonTitle" data-i18n="worker.card.lesson.title">Lesson</div>
+            <button class="btn btn-ghost" id="closeLesson" data-i18n="worker.lesson.close">✕ Close</button>
+          </div>
+          <div class="lesson-step" id="lessonStep"></div>
+          <div class="lesson-quiz" id="lessonQuiz"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MANAGER VIEW ============== -->
+  <section class="view" data-view="manager">
+    <div class="view-header">
+      <div>
+        <div class="view-eyebrow" data-i18n="manager.view.eyebrow">🏭 Manager Dashboard</div>
+        <h2 class="view-title"><span data-i18n="manager.view.title">Factory Overview</span> · <span class="muted" id="managerFactoryName">Garmentex BD Ltd. — Gazipur</span></h2>
+      </div>
+      <div class="view-tabs">
+        <button class="tab-btn active" data-mtab="overview" data-i18n="manager.tab.overview">📊 Overview</button>
+        <button class="tab-btn" data-mtab="complaints" data-i18n="manager.tab.complaints">📋 Complaints</button>
+        <button class="tab-btn" data-mtab="trends" data-i18n="manager.tab.trends">📈 AI Trends</button>
+        <button class="tab-btn" data-mtab="search" data-i18n="manager.tab.search">🔎 Smart Search</button>
+        <button class="tab-btn" data-mtab="report" data-i18n="manager.tab.report">📄 Weekly AI Report</button>
+      </div>
+    </div>
+
+    <div class="mtab-pane active" data-mpane="overview">
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="kpi-label" data-i18n="manager.kpi.health">Factory Health Score</div>
+          <div class="kpi-value"><span class="big" id="kHealth">87</span><span class="of">/100</span></div>
+          <div class="kpi-trend good" data-i18n="manager.kpi.excellent">Excellent · Stable</div>
+          <div class="kpi-bar"><div class="kpi-fill" id="kHealthBar" style="width:87%"></div></div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label" data-i18n="manager.kpi.open">Open Complaints</div>
+          <div class="kpi-value"><span class="big" id="kOpen">23</span></div>
+          <div class="kpi-trend bad" data-i18n="manager.kpi.vsLastWeek">▲ 12% vs last week</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label" data-i18n="manager.kpi.resolution">Avg. Resolution Time</div>
+          <div class="kpi-value"><span class="big" id="kRes">3.2</span><span class="of" data-i18n="manager.kpi.days">days</span></div>
+          <div class="kpi-trend bad" data-i18n="manager.kpi.slower">▲ 0.4d slower</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label" data-i18n="manager.kpi.satisfaction">Worker Satisfaction</div>
+          <div class="kpi-value"><span class="big" id="kSat">74</span><span class="of">%</span></div>
+          <div class="kpi-trend good" data-i18n="manager.kpi.thisMonth">▲ 3% this month</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label" data-i18n="manager.kpi.training">Safety Training</div>
+          <div class="kpi-value"><span class="big" id="kTrain">94</span><span class="of">%</span></div>
+          <div class="kpi-trend good" data-i18n="manager.kpi.onTrack">On track</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-label" data-i18n="manager.kpi.critical">Critical Issues</div>
+          <div class="kpi-value"><span class="big" id="kCrit">4</span></div>
+          <div class="kpi-trend bad" data-i18n="manager.kpi.needsReview">Needs immediate review</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="manager.card.trend">📈 Complaints — Last 30 Days</div>
+            <div class="muted" data-i18n="manager.card.trendSub">Real-time</div>
+          </div>
+          <canvas id="chartTrend" height="160"></canvas>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="manager.card.cat">Categories Breakdown</div>
+          </div>
+          <canvas id="chartCat" height="160"></canvas>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="manager.card.sent">Sentiment Trend</div>
+            <div class="muted" data-i18n="manager.card.sentSub">AI-analyzed worker mood</div>
+          </div>
+          <canvas id="chartSent" height="160"></canvas>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="manager.card.dept">🏢 Department Risk Map</div>
+          </div>
+          <div id="deptRisk" class="dept-risk"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.insights">🤖 AI Insights & Recommendations</div>
+          <div class="muted" data-i18n="manager.card.insightsSub">Updated every 5 minutes</div>
+        </div>
+        <div class="insights-grid" id="insightsGrid"></div>
+      </div>
+    </div>
+
+    <!-- COMPARE: multi-factory picker + industry stats -->
+    <div class="mtab-pane" data-mpane="compare">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.comparePick">🏭 Pick factories to compare</div>
+          <div class="muted" data-i18n="manager.card.comparePickSub">Click chips to toggle. Stats update live.</div>
+        </div>
+        <div id="comparePicker" class="cmp-picker"></div>
+        <div id="compareSummary" class="cmp-summary"></div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="manager.card.compareBars">📊 Health comparison</div>
+          </div>
+          <div id="compareBars" class="cmp-bars"></div>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title" data-i18n="manager.card.compareTable">📋 Side-by-side</div>
+          </div>
+          <div id="compareTable" class="cmp-table"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT-IF: scenario simulator -->
+    <div class="mtab-pane" data-mpane="whatif">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.whatif">🧪 What If? Scenario Simulator</div>
+          <div class="muted" data-i18n="manager.card.whatifSub">Planning aid — not a guarantee</div>
+        </div>
+        <div class="wi-controls">
+          <label class="wi-label" data-i18n="manager.whatif.factory">Factory</label>
+          <select id="wiFactory" class="wi-sel"></select>
+          <label class="wi-label" data-i18n="manager.whatif.action">Action</label>
+          <select id="wiScenario" class="wi-sel">
+            <option value="resolve_wage"   data-i18n="manager.whatif.opt.wage">Resolve all wage complaints today</option>
+            <option value="resolve_safety" data-i18n="manager.whatif.opt.safety">Resolve all safety incidents today</option>
+            <option value="resolve_harass" data-i18n="manager.whatif.opt.harass">Resolve all harassment cases today</option>
+            <option value="resolve_all"    data-i18n="manager.whatif.opt.all">Resolve every open complaint today</option>
+            <option value="reduce_severity" data-i18n="manager.whatif.opt.severity">Cut Critical severity by 50%</option>
+            <option value="add_training"   data-i18n="manager.whatif.opt.training">Run a safety training week</option>
+          </select>
+          <button id="wiRun" class="btn btn-primary" data-i18n="manager.whatif.run">Run Simulation</button>
+        </div>
+
+        <div id="wiResult" class="wi-result">
+          <div class="wi-empty" data-i18n="manager.whatif.empty">Choose a factory and an action, then hit Run Simulation.</div>
+        </div>
+
+        <div class="wi-disclaimer" data-i18n="manager.whatif.disclaimer">
+          ⚠ This is an AI projection based on historical patterns, not a guarantee. Use it to plan, not to promise.
+        </div>
+      </div>
+    </div>
+
+    <div class="mtab-pane" data-mpane="complaints">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.allComplaints">📋 All Complaints</div>
+          <div class="filter-row">
+            <select id="filterCat">
+              <option value="" data-i18n="manager.filter.allCat">All categories</option>
+            </select>
+            <select id="filterSev">
+              <option value="" data-i18n="manager.filter.allSev">All severities</option>
+              <option data-i18n="manager.sev.critical">Critical</option><option data-i18n="manager.sev.high">High</option><option data-i18n="manager.sev.medium">Medium</option><option data-i18n="manager.sev.low">Low</option>
+            </select>
+            <select id="filterStatus">
+              <option value="" data-i18n="manager.filter.allStatus">All statuses</option>
+              <option data-i18n="manager.status.open">Open</option><option data-i18n="manager.status.review">In Review</option><option data-i18n="manager.status.resolved">Resolved</option>
+            </select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="complaint-table">
+            <thead>
+              <tr>
+                <th data-i18n="manager.table.id">ID</th><th data-i18n="manager.table.date">Date</th><th data-i18n="manager.table.category">Category</th><th data-i18n="manager.table.summary">Summary</th>
+                <th data-i18n="manager.table.severity">Severity</th><th data-i18n="manager.table.sentiment">Sentiment</th><th data-i18n="manager.table.affected">Affected</th><th data-i18n="manager.table.status">Status</th><th data-i18n="manager.table.actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="complaintsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="mtab-pane" data-mpane="trends">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.aiTrend">📈 AI Trend Detection</div>
+          <div class="muted" data-i18n="manager.card.aiTrendSub">Emerging workplace risk patterns</div>
+        </div>
+        <div class="trend-summary" id="trendSummary"></div>
+        <div class="grid-2">
+          <div>
+            <h4 class="sub-h" data-i18n="manager.sub.volume">📊 Category Volume Trend</h4>
+            <canvas id="chartTrend2" height="200"></canvas>
+          </div>
+          <div>
+            <h4 class="sub-h" data-i18n="manager.sub.trajectory">🧠 Sentiment Trajectory</h4>
+            <canvas id="chartSent2" height="200"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mtab-pane" data-mpane="search">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.search">🔎 AI Smart Search</div>
+          <div class="muted" data-i18n="manager.card.searchSub">Ask in natural language</div>
+        </div>
+        <div class="search-area">
+          <input type="text" id="aiSearch" data-i18n-placeholder="manager.search.placeholder" placeholder="e.g. show harassment complaints from last week, or Which department has the worst safety record?" />
+          <button class="btn btn-primary" id="aiSearchBtn" data-i18n="manager.search.ask">Ask AI</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
+    <div class="mtab-pane" data-mpane="report">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="manager.card.report">📄 Weekly AI Report</div>
+          <div class="muted" data-i18n="manager.card.reportSub">Auto-generated every Monday</div>
+          <button class="btn btn-ghost" id="regenReport" data-i18n="manager.card.regen">🔄 Regenerate</button>
+        </div>
+        <div class="report-body" id="weeklyReport"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INSPECTOR VIEW ============== -->
+  <section class="view" data-view="inspector">
+    <div class="view-header">
+      <div>
+        <div class="view-eyebrow" data-i18n="inspector.view.eyebrow">🛡️ Inspector Console</div>
+        <h2 class="view-title" data-i18n="inspector.view.title">National Compliance Overview</h2>
+      </div>
+      <div class="view-tabs">
+        <button class="tab-btn active" data-itab="priority" data-i18n="inspector.tab.priority">🎯 Priority Targets</button>
+        <button class="tab-btn" data-itab="compare" data-i18n="inspector.tab.compare">⚖️ Compare Factories</button>
+        <button class="tab-btn" data-itab="compliance" data-i18n="inspector.tab.compliance">📜 Compliance Reports</button>
+      </div>
+    </div>
+
+    <div class="itab-pane active" data-ipane="priority">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="inspector.card.assistant">🤖 AI Inspector Assistant</div>
+          <div class="muted" data-i18n="inspector.card.assistantSub">Today's highest priority factories</div>
+        </div>
+        <div class="priority-list" id="priorityList"></div>
+      </div>
+    </div>
+
+    <div class="itab-pane" data-ipane="compare">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="inspector.card.compare">⚖️ Factory Comparison</div>
+          <div class="muted" data-i18n="inspector.card.compareSub">Side-by-side health metrics</div>
+        </div>
+        <div class="compare-grid" id="compareGrid"></div>
+      </div>
+    </div>
+
+    <div class="itab-pane" data-ipane="compliance">
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title" data-i18n="inspector.card.compliance">📜 AI Compliance Assistant</div>
+          <div class="muted" data-i18n="inspector.card.complianceSub">Select a factory to generate compliance report</div>
+          <select id="compFactory"></select>
+        </div>
+        <div class="report-body" id="complianceReport"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== TOAST CONTAINER ============== -->
+<div id="toast-root" class="toast-root"></div>
+
+<!-- ============== SCRIPTS ============== -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="data/mockData.js"></script>
+<script src="data/i18n.js"></script>
+<script src="js/aiEngine.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

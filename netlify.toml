@@ -1,0 +1,57 @@
+# ============================================================
+# ThreadWatch AI — Netlify deployment configuration
+# ============================================================
+# Static SPA. No build step. `app/` is the publish directory.
+
+[build]
+  publish = "app"
+
+# Helpful redirect: route any unknown path to index.html
+# (currently we don't use it, but future-proofs for client-side routing)
+
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
+  force = false
+
+# ============================================================
+# CACHE BUSTING
+# ============================================================
+# We tag every static asset with `?v=N` on each release so the
+# browser refreshes instantly. Netlify must NOT cache these:
+#   - index.html              (cheap, always fresh)
+#   - /css/*                  (rebuilt on edits)
+#   - /js/*                   (rebuilt on edits)
+# Everything else (404.html etc.) can be cached normally.
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Pragma        = "no-cache"
+    Expires       = "0"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/data/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+# Security headers — modest, non-blocking defaults
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "geolocation=(), microphone=(), camera=()"

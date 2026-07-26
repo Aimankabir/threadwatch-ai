@@ -1,0 +1,47 @@
+# ============== OS ===========
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============== Editors ===========
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ============== Puku / tooling ===========
+.puku/
+verify_keys_tmp.mjs
+check.js
+
+# ============== Node / build artifacts (we don't use any, but future-proof) ===========
+node_modules/
+dist/
+build/
+.cache/
+.parcel-cache/
+.vercel/
+.next/
+out/
+
+# ============== Env ===========
+.env
+.env.local
+.env.*.local
+
+# ============== Logs ===========
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============== Local-only delivery scripts ===========
+serve.ps1
+serve-job.ps1
+start.ps1
+start-server.bat
+server/
