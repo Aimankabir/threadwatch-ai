@@ -41,7 +41,7 @@ ThreadWatch AI turns anonymous worker complaints into **structured, explainable,
 |---|---|
 | **GitHub repo** | [github.com/AimanKabir/threadwatch-ai](https://github.com/AimanKabir/threadwatch-ai) |
 | **Live app** | [**threadwatch-ai.netlify.app**](https://threadwatch-ai.netlify.app) ← try it now |
-| **Demo video** | Google Drive public link _(see [Demo Video section](#-demo-video) below — pending)_ |
+| **Demo video** | [▶ Watch on Google Drive](https://drive.google.com/file/d/1cqBm8PU23jf_9P6YUmc43ss7uohvCld_/view?usp=sharing) |
 | **Concept note** | [`docs/CONCEPT_NOTE.md`](docs/CONCEPT_NOTE.md) |
 
 ---
@@ -166,7 +166,7 @@ The app supports **English** and **বাংলা (Bangla)** out of the box. To
 
 ## 📹 Demo Video
 
-🎥 **[▶ Watch the demo on Google Drive →](https://drive.google.com/file/d/REPLACE_WITH_FILE_ID/view?usp=sharing)**
+🎥 **[▶ Watch the demo on Google Drive →](https://drive.google.com/file/d/1cqBm8PU23jf_9P6YUmc43ss7uohvCld_/view?usp=sharing)**
 
 _(1–3 minute walkthrough covering worker → manager → inspector narrative, with the three signature features shown live: anonymity shield, why-this-score, anomaly pulse.)_
 
